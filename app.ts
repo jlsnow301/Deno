@@ -31,7 +31,7 @@ app.use(goalsRouter.routes());
 app.use(goalsRouter.allowedMethods());
 
 app.use(async (ctx) => {
-  await send(ctx, ctx.request.url.pathname, { root: "static" });
+  await send(ctx, ctx.request.url.pathname);
 });
 
 app.listen({ port: 3000 });

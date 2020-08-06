@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Goal</title>
+    <link rel="stylesheet" href="/static/app.css"
+  </head>
+  <body>
+    <div id="goal">
+      <p><%= goal.name></p>
+      <form action="/<% goal.id %>" method="POST">
+        <button>DELETE GOAL</button>
+      </form>
+    </div>
+    <div id="add-goal-form">
+      <form action="/update-goal" method="POST">
+        <input type="text" value="<%= goal.name %>" name="goal-text" />
+        <input type="hidden" value="<%= goal.id %>" name="goal-id" />
+        <button type="submit">Update Goal</button>
+      </form>
+    </div>
+  </body>
+</html>
