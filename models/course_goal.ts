@@ -1,7 +1,5 @@
 import getGoalsCollection from "../helpers/db.ts";
 
-let goals: { name: string; id: string }[] = [];
-
 export class CourseGoal {
   static async create(text: string) {
     const newGoal = { name: text };
