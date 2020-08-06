@@ -5,6 +5,7 @@ import {
   Status,
 } from "https://deno.land/x/oak/mod.ts";
 import { renderFileToString } from "https://deno.land/x/dejs/mod.ts";
+
 import goalsRouter from "./routes/goals.ts";
 
 const app = new Application();
@@ -13,11 +14,16 @@ app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
+    console.log(err);
     if (isHttpError(err) && err.status === Status.NotFound) {
-      const body = await renderFileToString(Deno.cwd() + "/not_found.ejs", {});
+      const body = await renderFileToString(
+        Deno.cwd() + "/views/not_found.ejs",
+        {}
+      );
       ctx.response.body = body;
     } else {
-      ctx.response.body = "Something went wrong, please try again!";
+      ctx.response.body =
+        "Something went wrong, sorry! Please try again later!";
     }
   }
 });

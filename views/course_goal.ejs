@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Single Goal</title>
-    <link rel="stylesheet" href="/static/app.css"
+    <link rel="stylesheet" href="/static/app.css" />
   </head>
   <body>
     <div id="goal">
-      <p><%= goal.name></p>
-      <form action="/<% goal.id %>" method="POST">
-        <button>DELETE GOAL</button>
+      <p><%= goal.name %></p>
+      <form action="/<%= goal.id %>" method="POST">
+        <button>Delete Goal</button>
       </form>
     </div>
     <div id="add-goal-form">
