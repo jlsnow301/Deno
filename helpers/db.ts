@@ -2,7 +2,12 @@ import { MongoClient, Collection } from "https://deno.land/x/mongo/mod.ts";
 
 import { MONGO_URI } from "./keys.ts";
 
-let collection: Collection | null = null;
+interface collectionSchema {
+  name: string;
+  _id: { $oid: string };
+}
+
+let collection: Collection<collectionSchema> | null = null;
 
 export function connect() {
   const client = new MongoClient();
@@ -13,7 +18,7 @@ export function connect() {
   collection = db.collection("goals");
 }
 
-function getCollection() {
+export function getGoalsCollection() {
   return collection;
 }
 

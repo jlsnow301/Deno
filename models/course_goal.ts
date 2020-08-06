@@ -1,4 +1,4 @@
-import getGoalsCollection from "../helpers/db.ts";
+import { getGoalsCollection } from "../helpers/db.ts";
 
 export class CourseGoal {
   static async create(text: string) {
@@ -30,7 +30,7 @@ export class CourseGoal {
       const goalDoc = await getGoalsCollection()!.findOne({
         _id: { $oid: id },
       });
-      return goalDoc;
+      return goalDoc!;
     } catch (err) {
       console.log(err);
       throw new Error("Could not find goal!");
