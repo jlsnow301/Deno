@@ -58,7 +58,7 @@ export class CourseGoal {
 
   static async delete(id: string) {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-      throw new Error("Could not find goal by id");
+      throw new Error("Could not find goal by id!");
     }
     try {
       await getGoalsCollection()!.deleteOne({ _id: { $oid: id } });
