@@ -16,7 +16,7 @@
     </div>
     <ul>
       <% for (let i = 0; i < goals.length; i++) { %>
-      <li><a href="/<%= goals[i].id %>"><%= goals[i].name %></a></li>
+      <li><a href="/<%= goals[i]._id.$oid %>"><%= goals[i].name %></a></li>
       <% } %>
     </ul>
   </body>

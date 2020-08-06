@@ -7,6 +7,9 @@ import {
 import { renderFileToString } from "https://deno.land/x/dejs/mod.ts";
 
 import goalsRouter from "./routes/goals.ts";
+import { connect } from "./helpers/db.ts";
+
+connect();
 
 const app = new Application();
 
