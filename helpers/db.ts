@@ -1,25 +1,16 @@
-import { MongoClient, Collection } from "https://deno.land/x/mongo/mod.ts";
+import { MongoClient, Database } from "https://deno.land/x/mongo@v0.7.0/mod.ts";
+import { MONGO_URI } from "../config/keys.ts";
 
-import { MONGO_URI } from "./keys.ts";
-
-interface collectionSchema {
-  name: string;
-  _id: { $oid: string };
-}
-
-let collection: Collection<collectionSchema> | null = null;
+let database: Database;
 
 export function connect() {
   const client = new MongoClient();
-
   client.connectWithUri(MONGO_URI);
-
-  const db = client.database("course-goals");
-  collection = db.collection("goals");
+  database = client.database("learning_resources");
 }
 
-export function getGoalsCollection() {
-  return collection;
+function getDb() {
+  return database;
 }
 
-export default collection;
+export default getDb;
