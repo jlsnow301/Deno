@@ -28,6 +28,35 @@ export async function addResource(ctx: RContext) {
   ctx.response.body = { insertedResource: id };
 }
 
-export async function updateResource(ctx: RContext) {}
+export async function updateResource(ctx: RContext) {
+  const data = await ctx.request.body();
+  const body = await data.value;
+  const title = body?.title;
+  const desc = body?.description;
+  const imageUrl = body?.imageUrl;
+  const resourceUrl = body?.url;
+  const id = ctx.params.resourceId!;
 
-export async function deleteResource(ctx: RContext) {}
+  LearningResource.update(id, {
+    title: title,
+    description: desc,
+    imageUrl: imageUrl,
+    url: resourceUrl,
+  });
+  ctx.response.body = {
+    message: "Updated resource!",
+    updatedResource: {
+      title: title,
+      description: desc,
+      imageUrl: imageUrl,
+      url: resourceUrl,
+      id: id,
+    },
+  };
+}
+
+export async function deleteResource(ctx: RContext) {
+  const id = ctx.params.resourceId!;
+  await LearningResource.delete(id);
+  ctx.response.body = { message: "Deleted resource!" };
+}

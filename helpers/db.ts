@@ -1,4 +1,4 @@
-import { MongoClient, Database } from "https://deno.land/x/mongo@v0.7.0/mod.ts";
+import { MongoClient, Database } from "https://deno.land/x/mongo/mod.ts";
 import { MONGO_URI } from "../config/keys.ts";
 
 let database: Database;

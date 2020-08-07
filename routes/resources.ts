@@ -9,12 +9,12 @@ import {
 
 const router = new Router();
 
-router.get("/resources");
+router.get("/resources", getResources);
 
-router.post("resources");
+router.post("resources", addResource);
 
-router.patch("/resources");
+router.patch("/resources/:resourceId", updateResource);
 
-router.delete("/resources");
+router.delete("/resources/:resourceId", deleteResource);
 
 export default router;
